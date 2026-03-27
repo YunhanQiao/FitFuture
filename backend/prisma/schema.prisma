@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id                  String    @id @default(uuid())
+  appleUserId         String    @unique @map("apple_user_id")
+  email               String?
+  displayName         String?   @map("display_name")
+  heightCm            Float?    @map("height_cm")
+  weightKg            Float?    @map("weight_kg")
+  bodyFatPercent      Float?    @map("body_fat_percent")
+  goalType            GoalType? @map("goal_type")
+  goalMonths          Int?      @map("goal_months")
+  trainingDaysPerWeek Int?      @map("training_days_per_week")
+  checkInWeekday      Int?      @map("check_in_weekday")
+  apnsToken           String?   @map("apns_token")
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+  deletedAt           DateTime? @map("deleted_at")
+
+  photos     Photo[]
+  aiJobs     AIGenerationJob[]
+  checkIns   CheckIn[]
+
+  @@map("users")
+}
+
+model Photo {
+  id         String    @id @default(uuid())
+  userId     String    @map("user_id")
+  type       PhotoType
+  storagePath String   @map("storage_path")
+  weekNumber Int?      @map("week_number")
+  weightKg   Float?    @map("weight_kg")
+  takenAt    DateTime  @default(now()) @map("taken_at")
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  checkIn  CheckIn?
+  aiJob    AIGenerationJob? @relation("BaselinePhoto")
+
+  @@map("photos")
+}
+
+model AIGenerationJob {
+  id               String    @id @default(uuid())
+  userId           String    @map("user_id")
+  baselinePhotoId  String    @unique @map("baseline_photo_id")
+  status           JobStatus @default(queued)
+  replicateJobId   String?   @map("replicate_job_id")
+  resultStoragePath String?  @map("result_storage_path")
+  errorMessage     String?   @map("error_message")
+  attempts         Int       @default(0)
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  user          User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  baselinePhoto Photo @relation("BaselinePhoto", fields: [baselinePhotoId], references: [id])
+
+  @@map("ai_generation_jobs")
+}
+
+model CheckIn {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  photoId    String   @unique @map("photo_id")
+  weekNumber Int      @map("week_number")
+  weightKg   Float?   @map("weight_kg")
+  loggedAt   DateTime @default(now()) @map("logged_at")
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  photo Photo @relation(fields: [photoId], references: [id])
+
+  @@map("check_ins")
+}
+
+enum GoalType {
+  fat_loss
+  muscle_gain
+  recomposition
+
+  @@map("goal_type")
+}
+
+enum PhotoType {
+  baseline
+  progress
+  ai_generated
+
+  @@map("photo_type")
+}
+
+enum JobStatus {
+  queued
+  processing
+  completed
+  failed
+
+  @@map("job_status")
+}

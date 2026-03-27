@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+dist/
+
+# Environment & secrets
+.env
+*.p8
+*.p12
+
+# Build artifacts
+*.log
+.DS_Store
+
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+build/
+
+# Prisma
+prisma/migrations/**/migration_lock.toml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

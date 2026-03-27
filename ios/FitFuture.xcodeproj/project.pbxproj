@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		043F42B3E0CBF15DD16DF133 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B919508B545CE6C6FEA20F6 /* DashboardViewModel.swift */; };
+		1D59CC8D4DCE6A318EBA5D4A /* AIJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5852D2C3F686A1F4380FAD63 /* AIJob.swift */; };
+		2B88C521F15670429EB379AF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0006BC5E1B2DA8E3F7E71 /* Photo.swift */; };
+		3487C0E6ED2137B9F046339A /* GoalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A25F06CE776105B408D7DA0 /* GoalSelectionView.swift */; };
+		35E631769C61F88C17C4BF83 /* AIJobViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9455CC5D26B694E79A470FAB /* AIJobViewModel.swift */; };
+		3DCC5DDC29E8B5DCFA816AB4 /* RevealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FC75A290B09C59A9FE8424 /* RevealView.swift */; };
+		3FDA8C897E3DF7B35802BB52 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15CCE656E0A00400E4CE81F /* OnboardingViewModel.swift */; };
+		49C9435C233F0FA816BA2440 /* FitFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63901E126770FFFBDC692A37 /* FitFutureApp.swift */; };
+		50527BE26C367FA2208084C3 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F91D358283B2820F752D0D /* AuthViewModel.swift */; };
+		552EF9834E13A3530C67BAF2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D547CF78D29F1827D18D7EAE /* HomeView.swift */; };
+		772561A6363A8C146FFC22D3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8340823149E3383C0A7034 /* APIService.swift */; };
+		81E10DC125E49568D0CC8574 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD7B83BDCE52F9BBD3BD5D2 /* DashboardView.swift */; };
+		827194371DE5F3B651B3537A /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58FFB5A52EA222DEB803B1 /* ScheduleView.swift */; };
+		94A0E20A05A12CEC67ED5B58 /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94856938A835615823A52AFD /* OnboardingFlowView.swift */; };
+		A596073F7263B70066B44A57 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0E9AE388F37A8B51A3180D /* NotificationService.swift */; };
+		AA629D7FE3E6DE3C152131CA /* StatsEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8C61DFF96C7A33AB38E88 /* StatsEntryView.swift */; };
+		B8B561160A6AED50031EB886 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C728BCB3A51E2BF6E2E0C9D /* TimelineView.swift */; };
+		CCA28C2C5FAA8F1BDCFE3219 /* CheckInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F071D966C110C20727AE9E5 /* CheckInView.swift */; };
+		D8EC88CEE5456BB5A3D90B2F /* AIGenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8501C7144E1234F8DF02CD6 /* AIGenerationView.swift */; };
+		E1A861AEB094E09988C01DAE /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826573D3048990440E5F21D /* SplashView.swift */; };
+		E4E95BAA796A71E2AE7C583B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F423A01B68E1377F5C6A04 /* SettingsView.swift */; };
+		E9990BBDE08C750B6C20E6CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56212D6978F5AB9AA0FFE811 /* User.swift */; };
+		EC085F9EF92D4B2B60E9BF41 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424C59805CD65EAB7C79B563 /* RootView.swift */; };
+		F729AA39F8E19AB446D03A65 /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2A8F887CFE1B56E6316868 /* PhotoCaptureView.swift */; };
+		F9B921DFD8C76AC3D656C0E3 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19275D15D2C25B2308E978 /* WelcomeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		424C59805CD65EAB7C79B563 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		56212D6978F5AB9AA0FFE811 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5852D2C3F686A1F4380FAD63 /* AIJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIJob.swift; sourceTree = "<group>"; };
+		5C728BCB3A51E2BF6E2E0C9D /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		63901E126770FFFBDC692A37 /* FitFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFutureApp.swift; sourceTree = "<group>"; };
+		6B919508B545CE6C6FEA20F6 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		7078C24D65F635057EAFDC33 /* FitFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitFuture.entitlements; sourceTree = "<group>"; };
+		753B9EB3F98E4DA69C2C5316 /* FitFuture.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FitFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		76F91D358283B2820F752D0D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		7A8340823149E3383C0A7034 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		7AD7B83BDCE52F9BBD3BD5D2 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		7F0E9AE388F37A8B51A3180D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8A25F06CE776105B408D7DA0 /* GoalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionView.swift; sourceTree = "<group>"; };
+		9455CC5D26B694E79A470FAB /* AIJobViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIJobViewModel.swift; sourceTree = "<group>"; };
+		94856938A835615823A52AFD /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
+		96FC75A290B09C59A9FE8424 /* RevealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealView.swift; sourceTree = "<group>"; };
+		9F071D966C110C20727AE9E5 /* CheckInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInView.swift; sourceTree = "<group>"; };
+		B4F423A01B68E1377F5C6A04 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B826573D3048990440E5F21D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		BF19275D15D2C25B2308E978 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		D3B8C61DFF96C7A33AB38E88 /* StatsEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsEntryView.swift; sourceTree = "<group>"; };
+		D547CF78D29F1827D18D7EAE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D745CEB4B8DB7D3F5FFD757A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D8501C7144E1234F8DF02CD6 /* AIGenerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIGenerationView.swift; sourceTree = "<group>"; };
+		E2E0006BC5E1B2DA8E3F7E71 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		F15CCE656E0A00400E4CE81F /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		FD2A8F887CFE1B56E6316868 /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
+		FD58FFB5A52EA222DEB803B1 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		03EAE79E1060FB0D1DC9ACEE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9455CC5D26B694E79A470FAB /* AIJobViewModel.swift */,
+				76F91D358283B2820F752D0D /* AuthViewModel.swift */,
+				6B919508B545CE6C6FEA20F6 /* DashboardViewModel.swift */,
+				F15CCE656E0A00400E4CE81F /* OnboardingViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		088B27F6FD37AD9B7EFF7E9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5852D2C3F686A1F4380FAD63 /* AIJob.swift */,
+				E2E0006BC5E1B2DA8E3F7E71 /* Photo.swift */,
+				56212D6978F5AB9AA0FFE811 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		22B08722302907434598D674 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				753B9EB3F98E4DA69C2C5316 /* FitFuture.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29383539C76199D4D05BCA77 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D8501C7144E1234F8DF02CD6 /* AIGenerationView.swift */,
+				8A25F06CE776105B408D7DA0 /* GoalSelectionView.swift */,
+				94856938A835615823A52AFD /* OnboardingFlowView.swift */,
+				FD2A8F887CFE1B56E6316868 /* PhotoCaptureView.swift */,
+				96FC75A290B09C59A9FE8424 /* RevealView.swift */,
+				FD58FFB5A52EA222DEB803B1 /* ScheduleView.swift */,
+				D3B8C61DFF96C7A33AB38E88 /* StatsEntryView.swift */,
+				BF19275D15D2C25B2308E978 /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		2C24DC2D643F36E876915BC5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7A8340823149E3383C0A7034 /* APIService.swift */,
+				7F0E9AE388F37A8B51A3180D /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3D6B200154665A306364CEF8 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				9F071D966C110C20727AE9E5 /* CheckInView.swift */,
+				5C728BCB3A51E2BF6E2E0C9D /* TimelineView.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		565139CE984C81AA857AA37A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		89AE00D305EBE8114EA7D121 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				7AD7B83BDCE52F9BBD3BD5D2 /* DashboardView.swift */,
+				D547CF78D29F1827D18D7EAE /* HomeView.swift */,
+				B4F423A01B68E1377F5C6A04 /* SettingsView.swift */,
+				B826573D3048990440E5F21D /* SplashView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		93AEAE5092221267ABC6705A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		BD71D867BB785FCC1F217972 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				63901E126770FFFBDC692A37 /* FitFutureApp.swift */,
+				424C59805CD65EAB7C79B563 /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C3B8D40CC7F66DB48BACD432 /* FitFuture */ = {
+			isa = PBXGroup;
+			children = (
+				BD71D867BB785FCC1F217972 /* App */,
+				088B27F6FD37AD9B7EFF7E9B /* Models */,
+				D469A9831EB74E5CAF0C9EFD /* Resources */,
+				2C24DC2D643F36E876915BC5 /* Services */,
+				93AEAE5092221267ABC6705A /* Utilities */,
+				03EAE79E1060FB0D1DC9ACEE /* ViewModels */,
+				E1FA27A50D7281FE400763A8 /* Views */,
+			);
+			path = FitFuture;
+			sourceTree = "<group>";
+		};
+		D469A9831EB74E5CAF0C9EFD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7078C24D65F635057EAFDC33 /* FitFuture.entitlements */,
+				D745CEB4B8DB7D3F5FFD757A /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D81558BBA25B382C072644F7 = {
+			isa = PBXGroup;
+			children = (
+				C3B8D40CC7F66DB48BACD432 /* FitFuture */,
+				22B08722302907434598D674 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1FA27A50D7281FE400763A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89AE00D305EBE8114EA7D121 /* Dashboard */,
+				29383539C76199D4D05BCA77 /* Onboarding */,
+				3D6B200154665A306364CEF8 /* Progress */,
+				565139CE984C81AA857AA37A /* Shared */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E92D1EA0D6FF53C65FF6084 /* FitFuture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57C4A00B0CC169615FFD61E3 /* Build configuration list for PBXNativeTarget "FitFuture" */;
+			buildPhases = (
+				12F0854607019DF743531A9C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FitFuture;
+			packageProductDependencies = (
+			);
+			productName = FitFuture;
+			productReference = 753B9EB3F98E4DA69C2C5316 /* FitFuture.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D08448E062BEC93B6B8367C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					6E92D1EA0D6FF53C65FF6084 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = B0DC9144C480C61F3D20BB67 /* Build configuration list for PBXProject "FitFuture" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D81558BBA25B382C072644F7;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 22B08722302907434598D674 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E92D1EA0D6FF53C65FF6084 /* FitFuture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12F0854607019DF743531A9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8EC88CEE5456BB5A3D90B2F /* AIGenerationView.swift in Sources */,
+				1D59CC8D4DCE6A318EBA5D4A /* AIJob.swift in Sources */,
+				35E631769C61F88C17C4BF83 /* AIJobViewModel.swift in Sources */,
+				772561A6363A8C146FFC22D3 /* APIService.swift in Sources */,
+				50527BE26C367FA2208084C3 /* AuthViewModel.swift in Sources */,
+				CCA28C2C5FAA8F1BDCFE3219 /* CheckInView.swift in Sources */,
+				81E10DC125E49568D0CC8574 /* DashboardView.swift in Sources */,
+				043F42B3E0CBF15DD16DF133 /* DashboardViewModel.swift in Sources */,
+				49C9435C233F0FA816BA2440 /* FitFutureApp.swift in Sources */,
+				3487C0E6ED2137B9F046339A /* GoalSelectionView.swift in Sources */,
+				552EF9834E13A3530C67BAF2 /* HomeView.swift in Sources */,
+				A596073F7263B70066B44A57 /* NotificationService.swift in Sources */,
+				94A0E20A05A12CEC67ED5B58 /* OnboardingFlowView.swift in Sources */,
+				3FDA8C897E3DF7B35802BB52 /* OnboardingViewModel.swift in Sources */,
+				2B88C521F15670429EB379AF /* Photo.swift in Sources */,
+				F729AA39F8E19AB446D03A65 /* PhotoCaptureView.swift in Sources */,
+				3DCC5DDC29E8B5DCFA816AB4 /* RevealView.swift in Sources */,
+				EC085F9EF92D4B2B60E9BF41 /* RootView.swift in Sources */,
+				827194371DE5F3B651B3537A /* ScheduleView.swift in Sources */,
+				E4E95BAA796A71E2AE7C583B /* SettingsView.swift in Sources */,
+				E1A861AEB094E09988C01DAE /* SplashView.swift in Sources */,
+				AA629D7FE3E6DE3C152131CA /* StatsEntryView.swift in Sources */,
+				B8B561160A6AED50031EB886 /* TimelineView.swift in Sources */,
+				E9990BBDE08C750B6C20E6CF /* User.swift in Sources */,
+				F9B921DFD8C76AC3D656C0E3 /* WelcomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0951A46CB4FFA70F6CAC55F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FitFuture/Resources/FitFuture.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FitFuture/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitfuture.app;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		20EB56EC7ADD42C1EF1710DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+		50CC8109C043B100B9D85CDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FitFuture/Resources/FitFuture.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FitFuture/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fitfuture.app;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A96268CA8AF7F59CE0FD883B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.10;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		57C4A00B0CC169615FFD61E3 /* Build configuration list for PBXNativeTarget "FitFuture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0951A46CB4FFA70F6CAC55F4 /* Debug */,
+				50CC8109C043B100B9D85CDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B0DC9144C480C61F3D20BB67 /* Build configuration list for PBXProject "FitFuture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A96268CA8AF7F59CE0FD883B /* Debug */,
+				20EB56EC7ADD42C1EF1710DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2D08448E062BEC93B6B8367C /* Project object */;
+}
