@@ -45,6 +45,22 @@ final class APIService {
         try await post("/api/auth/apple", body: ["identityToken": identityToken])
     }
 
+    func register(email: String, password: String, displayName: String?) async throws -> AuthResponse {
+        var body: [String: Any] = ["email": email, "password": password]
+        if let name = displayName { body["displayName"] = name }
+        return try await post("/api/auth/register", body: body)
+    }
+
+    func login(email: String, password: String) async throws -> AuthResponse {
+        try await post("/api/auth/login", body: ["email": email, "password": password])
+    }
+
+    #if DEBUG
+    func devSignIn() async throws -> AuthResponse {
+        try await post("/api/auth/dev", body: [:])
+    }
+    #endif
+
     // MARK: - Photos
 
     func uploadBaselinePhoto(userId: String, imageData: Data) async throws -> Photo {

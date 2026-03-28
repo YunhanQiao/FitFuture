@@ -8,7 +8,7 @@ final class DashboardViewModel: ObservableObject {
     @Published var futureSelfURL: URL?
     @Published var isLoading = false
 
-    private let user: User
+    let user: User
 
     init(user: User) {
         self.user = user

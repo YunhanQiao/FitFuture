@@ -7,6 +7,15 @@ struct HomeView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 24) {
+                    // Greeting
+                    if let name = vm.user.displayName {
+                        Text("Hi, \(name)!")
+                            .font(.title.bold())
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 16)
+                    }
+
                     // Hero — Future Self card
                     if let url = vm.futureSelfURL {
                         FutureSelfCardView(imageURL: url, streakWeeks: vm.currentStreakWeeks)
@@ -31,6 +40,7 @@ struct HomeView: View {
             }
             .background(Color.black)
             .navigationTitle("FitFuture")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitleDisplayMode(.large)
         }
     }

@@ -8,8 +8,9 @@ struct RootView: View {
             switch authViewModel.authState {
             case .unauthenticated:
                 OnboardingFlowView()
-            case .authenticated:
-                DashboardView()
+            case .authenticated(let user):
+                DashboardView(user: user)
+                    .id(user.id)
             case .loading:
                 SplashView()
             }

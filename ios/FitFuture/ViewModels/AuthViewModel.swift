@@ -9,15 +9,14 @@ enum AuthState: Equatable {
 }
 
 @MainActor
-final class AuthViewModel: NSObject, ObservableObject {
+final class AuthViewModel: ObservableObject {
     @Published var authState: AuthState = .loading
     @Published var error: String?
 
     private let tokenKey = "fitfuture_auth_token"
     private let userKey = "fitfuture_user"
 
-    override init() {
-        super.init()
+    init() {
         restoreSession()
     }
 
@@ -32,14 +31,69 @@ final class AuthViewModel: NSObject, ObservableObject {
         authState = .authenticated(user)
     }
 
-    func signInWithApple() {
-        let provider = ASAuthorizationAppleIDProvider()
-        let request = provider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.performRequests()
+    func register(email: String, password: String, displayName: String?) {
+        Task {
+            do {
+                let response = try await APIService.shared.register(email: email, password: password, displayName: displayName)
+                persist(token: response.token, user: response.user)
+                authState = .authenticated(response.user)
+            } catch {
+                self.error = error.localizedDescription
+            }
+        }
     }
+
+    func login(email: String, password: String) {
+        Task {
+            do {
+                let response = try await APIService.shared.login(email: email, password: password)
+                persist(token: response.token, user: response.user)
+                authState = .authenticated(response.user)
+            } catch {
+                self.error = error.localizedDescription
+            }
+        }
+    }
+
+    func handleAppleSignIn(result: Result<ASAuthorization, Error>) {
+        switch result {
+        case .failure(let err):
+            error = err.localizedDescription
+        case .success(let auth):
+            guard let credential = auth.credential as? ASAuthorizationAppleIDCredential,
+                  let tokenData = credential.identityToken,
+                  let token = String(data: tokenData, encoding: .utf8) else {
+                error = "Apple sign-in failed: missing credential"
+                return
+            }
+            Task {
+                do {
+                    print("[Auth] Got Apple token, calling backend...")
+                    let response = try await APIService.shared.signInWithApple(identityToken: token)
+                    print("[Auth] Backend success, user: \(response.user.id)")
+                    persist(token: response.token, user: response.user)
+                    authState = .authenticated(response.user)
+                } catch {
+                    print("[Auth] Error: \(error)")
+                    self.error = error.localizedDescription
+                }
+            }
+        }
+    }
+
+    #if DEBUG
+    func devLogin() {
+        Task {
+            do {
+                let response = try await APIService.shared.devSignIn()
+                persist(token: response.token, user: response.user)
+                authState = .authenticated(response.user)
+            } catch {
+                self.error = "Dev login failed: \(error.localizedDescription)"
+            }
+        }
+    }
+    #endif
 
     func signOut() {
         UserDefaults.standard.removeObject(forKey: tokenKey)
@@ -53,30 +107,5 @@ final class AuthViewModel: NSObject, ObservableObject {
             UserDefaults.standard.set(data, forKey: userKey)
         }
         APIService.shared.setAuthToken(token)
-    }
-}
-
-extension AuthViewModel: ASAuthorizationControllerDelegate {
-    func authorizationController(controller: ASAuthorizationController,
-                                 didCompleteWithAuthorization authorization: ASAuthorization) {
-        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
-              let tokenData = credential.identityToken,
-              let token = String(data: tokenData, encoding: .utf8) else {
-            self.error = "Apple sign-in failed: missing credential"
-            return
-        }
-        Task {
-            do {
-                let response = try await APIService.shared.signInWithApple(identityToken: token)
-                persist(token: response.token, user: response.user)
-                authState = .authenticated(response.user)
-            } catch {
-                self.error = error.localizedDescription
-            }
-        }
-    }
-
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        self.error = error.localizedDescription
     }
 }

@@ -4,11 +4,8 @@ struct DashboardView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @StateObject private var vm: DashboardViewModel
 
-    init() {
-        // Temporary init - will be replaced once user is injected via environment
-        _vm = StateObject(wrappedValue: DashboardViewModel(user: User(
-            id: "", createdAt: Date()
-        )))
+    init(user: User) {
+        _vm = StateObject(wrappedValue: DashboardViewModel(user: user))
     }
 
     var body: some View {
