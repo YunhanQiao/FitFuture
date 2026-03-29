@@ -44,8 +44,7 @@ struct ScheduleView: View {
                     Task {
                         notificationsGranted = await NotificationService.shared.requestPermission()
                         NotificationService.shared.scheduleWeeklyCheckInReminder(weekday: selectedWeekday)
-                        // TODO: Save user preferences and navigate to dashboard
-                        // authViewModel.completeOnboarding()
+                        finishOnboarding()
                     }
                 } label: {
                     Text("Enable Reminders & Start")
@@ -58,7 +57,7 @@ struct ScheduleView: View {
                 }
 
                 Button {
-                    // Skip notifications
+                    finishOnboarding()
                 } label: {
                     Text("Skip for now")
                         .font(.subheadline)
@@ -69,5 +68,11 @@ struct ScheduleView: View {
         }
         .padding(.horizontal, 24)
         .background(Color.black.ignoresSafeArea())
+    }
+
+    private func finishOnboarding() {
+        if let updatedUser = vm.savedUser {
+            authViewModel.updateUser(updatedUser)
+        }
     }
 }

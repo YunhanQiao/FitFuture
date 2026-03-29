@@ -18,10 +18,14 @@ final class DashboardViewModel: ObservableObject {
         isLoading = true
         defer { isLoading = false }
 
-        do {
-            checkIns = try await APIService.shared.fetchCheckIns(userId: user.id)
+        async let checkInsTask = APIService.shared.fetchCheckIns(userId: user.id)
+        async let aiJobTask = APIService.shared.fetchLatestAIJob(userId: user.id)
+
+        if let result = try? await checkInsTask {
+            checkIns = result
             currentStreakWeeks = calculateStreak()
-        } catch {}
+        }
+        futureSelfURL = try? await aiJobTask
     }
 
     private func calculateStreak() -> Int {

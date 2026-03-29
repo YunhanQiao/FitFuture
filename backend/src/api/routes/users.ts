@@ -48,6 +48,25 @@ usersRouter.post(
   }
 );
 
+// Get latest completed AI generation job (for dashboard Future Self card)
+usersRouter.get('/:userId/ai-job/latest', requireAuth, async (req: AuthRequest, res: Response) => {
+  if (req.userId !== req.params.userId) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  const job = await prisma.aIGenerationJob.findFirst({
+    where: { userId: req.params.userId, status: 'completed', resultStoragePath: { not: null } },
+    orderBy: { createdAt: 'desc' },
+  });
+
+  if (!job || !job.resultStoragePath) {
+    return res.status(404).json({ error: 'No completed AI job found' });
+  }
+
+  const resultPhotoURL = await storageService.getSignedUrl(job.resultStoragePath);
+  return res.json({ id: job.id, resultPhotoURL });
+});
+
 // Update user profile
 usersRouter.patch('/:userId', requireAuth, async (req: AuthRequest, res: Response) => {
   if (req.userId !== req.params.userId) {

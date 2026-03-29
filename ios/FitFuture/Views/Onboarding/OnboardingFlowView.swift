@@ -2,7 +2,13 @@ import SwiftUI
 
 struct OnboardingFlowView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @StateObject private var vm = OnboardingViewModel()
+    @StateObject private var vm: OnboardingViewModel
+
+    init(startAtPhotoCapture: Bool = false) {
+        let vm = OnboardingViewModel()
+        if startAtPhotoCapture { vm.currentStep = .photoCapture }
+        _vm = StateObject(wrappedValue: vm)
+    }
 
     var body: some View {
         ZStack {

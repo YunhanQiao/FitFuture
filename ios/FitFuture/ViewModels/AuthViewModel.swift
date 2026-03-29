@@ -95,6 +95,13 @@ final class AuthViewModel: ObservableObject {
     }
     #endif
 
+    func updateUser(_ user: User) {
+        if let data = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(data, forKey: userKey)
+        }
+        authState = .authenticated(user)
+    }
+
     func signOut() {
         UserDefaults.standard.removeObject(forKey: tokenKey)
         UserDefaults.standard.removeObject(forKey: userKey)

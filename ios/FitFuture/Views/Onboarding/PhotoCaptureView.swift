@@ -80,5 +80,13 @@ struct PhotoCaptureView: View {
         }
         .padding(.horizontal, 24)
         .background(Color.black.ignoresSafeArea())
+        .alert("Upload Failed", isPresented: Binding(
+            get: { vm.uploadError != nil },
+            set: { if !$0 { vm.uploadError = nil } }
+        )) {
+            Button("OK") { vm.uploadError = nil }
+        } message: {
+            Text(vm.uploadError ?? "")
+        }
     }
 }

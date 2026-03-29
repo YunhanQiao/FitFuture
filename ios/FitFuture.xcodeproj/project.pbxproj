@@ -42,7 +42,7 @@
 		63901E126770FFFBDC692A37 /* FitFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitFutureApp.swift; sourceTree = "<group>"; };
 		6B919508B545CE6C6FEA20F6 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		7078C24D65F635057EAFDC33 /* FitFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitFuture.entitlements; sourceTree = "<group>"; };
-		753B9EB3F98E4DA69C2C5316 /* FitFuture.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FitFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		753B9EB3F98E4DA69C2C5316 /* FitFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F91D358283B2820F752D0D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		7A8340823149E3383C0A7034 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		7AD7B83BDCE52F9BBD3BD5D2 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -232,11 +232,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
-				TargetAttributes = {
-					6E92D1EA0D6FF53C65FF6084 = {
-						DevelopmentTeam = "";
-					};
-				};
 			};
 			buildConfigurationList = B0DC9144C480C61F3D20BB67 /* Build configuration list for PBXProject "FitFuture" */;
 			developmentRegion = en;
@@ -301,6 +296,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = NB752D48YL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitFuture/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -380,6 +376,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = NB752D48YL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FitFuture/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

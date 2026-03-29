@@ -10,7 +10,7 @@ export interface ImageGenerationProvider {
 
 class ReplicateProvider implements ImageGenerationProvider {
   private readonly apiKey: string;
-  private readonly modelId: string;
+  private readonly modelId: string; // format: "owner/model-name"
 
   constructor() {
     this.apiKey = process.env.REPLICATE_API_KEY!;
@@ -18,22 +18,21 @@ class ReplicateProvider implements ImageGenerationProvider {
   }
 
   async generate(input: GenerationInput): Promise<ArrayBuffer> {
-    // Create prediction
-    const createRes = await fetch('https://api.replicate.com/v1/predictions', {
+    // Use the model-based predictions endpoint (no version hash needed)
+    const createRes = await fetch(`https://api.replicate.com/v1/models/${this.modelId}/predictions`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${this.apiKey}`,
         'Content-Type': 'application/json',
+        Prefer: 'wait=60', // wait up to 60s for result inline
       },
       body: JSON.stringify({
-        version: this.modelId,
         input: {
           image: input.baseImageURL,
           prompt: input.prompt,
-          negative_prompt: input.negativePrompt,
-          num_inference_steps: 30,
-          guidance_scale: 7.5,
-          ip_adapter_scale: 0.8,
+          strength: 0.75,
+          num_inference_steps: 28,
+          guidance: 3.5,
         },
       }),
     });
@@ -43,13 +42,27 @@ class ReplicateProvider implements ImageGenerationProvider {
       throw new Error(`Replicate create prediction failed: ${err}`);
     }
 
-    const prediction = (await createRes.json()) as { id: string };
-    const predictionId: string = prediction.id;
+    const prediction = (await createRes.json()) as {
+      id: string;
+      status: string;
+      output?: string | string[];
+      error?: string;
+    };
 
-    // Poll until complete
+    // If the Prefer: wait header returned a completed result, use it directly
+    if (prediction.status === 'succeeded') {
+      return this.downloadOutput(prediction.output);
+    }
+
+    if (prediction.status === 'failed' || prediction.status === 'canceled') {
+      throw new Error(`Replicate prediction ${prediction.status}: ${prediction.error ?? 'unknown'}`);
+    }
+
+    // Otherwise poll until complete
+    const predictionId: string = prediction.id;
     const maxAttempts = 60;
     for (let i = 0; i < maxAttempts; i++) {
-      await sleep(2000);
+      await sleep(3000);
 
       const pollRes = await fetch(`https://api.replicate.com/v1/predictions/${predictionId}`, {
         headers: { Authorization: `Bearer ${this.apiKey}` },
@@ -61,10 +74,7 @@ class ReplicateProvider implements ImageGenerationProvider {
       };
 
       if (status.status === 'succeeded') {
-        const outputURL: string = Array.isArray(status.output) ? status.output[0] : (status.output as string);
-        const imgRes = await fetch(outputURL);
-        if (!imgRes.ok) throw new Error('Failed to download generated image');
-        return imgRes.arrayBuffer();
+        return this.downloadOutput(status.output);
       }
 
       if (status.status === 'failed' || status.status === 'canceled') {
@@ -72,7 +82,15 @@ class ReplicateProvider implements ImageGenerationProvider {
       }
     }
 
-    throw new Error('Replicate prediction timed out after 2 minutes');
+    throw new Error('Replicate prediction timed out after 3 minutes');
+  }
+
+  private async downloadOutput(output: string | string[] | undefined): Promise<ArrayBuffer> {
+    const outputURL: string = Array.isArray(output) ? output[0] : (output as string);
+    if (!outputURL) throw new Error('Replicate returned no output URL');
+    const imgRes = await fetch(outputURL);
+    if (!imgRes.ok) throw new Error('Failed to download generated image from Replicate');
+    return imgRes.arrayBuffer();
   }
 }
 

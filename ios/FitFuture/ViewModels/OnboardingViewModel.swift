@@ -25,6 +25,7 @@ final class OnboardingViewModel: ObservableObject {
     @Published var trainingDays: Int = 4
     @Published var isUploading = false
     @Published var uploadError: String?
+    @Published var savedUser: User?
 
     let aiJobViewModel = AIJobViewModel()
 
@@ -48,7 +49,25 @@ final class OnboardingViewModel: ObservableObject {
     }
 
     func startAIGeneration(user: User) async {
-        guard let photoId = uploadedBaselinePhotoId else { return }
-        await aiJobViewModel.startGeneration(user: user, baselinePhotoId: photoId)
+        guard let photoId = uploadedBaselinePhotoId else {
+            aiJobViewModel.revealState = .failed("No baseline photo found. Please go back and upload a photo.")
+            return
+        }
+
+        do {
+            let updatedUser = try await APIService.shared.updateProfile(
+                userId: user.id,
+                heightCm: Double(height),
+                weightKg: Double(weight),
+                bodyFatPercent: Double(bodyFat),
+                goalType: selectedGoal.rawValue,
+                goalMonths: goalMonths,
+                trainingDaysPerWeek: trainingDays
+            )
+            savedUser = updatedUser
+            await aiJobViewModel.startGeneration(user: updatedUser, baselinePhotoId: photoId)
+        } catch {
+            aiJobViewModel.revealState = .failed("Failed to save profile: \(error.localizedDescription)")
+        }
     }
 }

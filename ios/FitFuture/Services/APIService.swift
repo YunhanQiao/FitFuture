@@ -61,6 +61,26 @@ final class APIService {
     }
     #endif
 
+    // MARK: - Users
+
+    func updateProfile(userId: String, heightCm: Double?, weightKg: Double?, bodyFatPercent: Double?,
+                       goalType: String?, goalMonths: Int?, trainingDaysPerWeek: Int?) async throws -> User {
+        var body: [String: Any] = [:]
+        if let v = heightCm { body["heightCm"] = v }
+        if let v = weightKg { body["weightKg"] = v }
+        if let v = bodyFatPercent { body["bodyFatPercent"] = v }
+        if let v = goalType { body["goalType"] = v }
+        if let v = goalMonths { body["goalMonths"] = v }
+        if let v = trainingDaysPerWeek { body["trainingDaysPerWeek"] = v }
+        return try await patch("/api/users/\(userId)", body: body)
+    }
+
+    func fetchLatestAIJob(userId: String) async throws -> URL {
+        struct AIJobResult: Decodable { let resultPhotoURL: URL }
+        let result: AIJobResult = try await get("/api/users/\(userId)/ai-job/latest")
+        return result.resultPhotoURL
+    }
+
     // MARK: - Photos
 
     func uploadBaselinePhoto(userId: String, imageData: Data) async throws -> Photo {
@@ -122,6 +142,16 @@ final class APIService {
         var req = URLRequest(url: url)
         req.httpMethod = "GET"
         if let token = authToken { req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization") }
+        return try await request(req)
+    }
+
+    private func patch<T: Decodable>(_ path: String, body: [String: Any]) async throws -> T {
+        guard let url = URL(string: baseURL + path) else { throw APIError.invalidURL }
+        var req = URLRequest(url: url)
+        req.httpMethod = "PATCH"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let token = authToken { req.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization") }
+        req.httpBody = try JSONSerialization.data(withJSONObject: body)
         return try await request(req)
     }
 

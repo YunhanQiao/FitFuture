@@ -4,7 +4,7 @@ struct Photo: Codable, Identifiable {
     let id: String
     let userId: String
     let type: PhotoType
-    let storageURL: URL
+    let storagePath: String
     var weekNumber: Int?
     var weightKg: Double?
     let takenAt: Date

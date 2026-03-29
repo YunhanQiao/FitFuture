@@ -9,8 +9,12 @@ struct RootView: View {
             case .unauthenticated:
                 OnboardingFlowView()
             case .authenticated(let user):
-                DashboardView(user: user)
-                    .id(user.id)
+                if user.goalType == nil {
+                    OnboardingFlowView(startAtPhotoCapture: true)
+                } else {
+                    DashboardView(user: user)
+                        .id(user.id)
+                }
             case .loading:
                 SplashView()
             }
